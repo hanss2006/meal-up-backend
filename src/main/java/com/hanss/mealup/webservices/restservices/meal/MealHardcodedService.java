@@ -20,4 +20,23 @@ public class MealHardcodedService {
     public List<Meal> findAll(){
         return meals;
     }
+
+    public  Meal deleteById(long id){
+        Meal meal = findById(id);
+        if (meal==null) return null;
+        if (meals.remove(meal)){
+            return meal;
+        }
+        return null;
+    }
+
+    private Meal findById(long id) {
+        for (Meal meal:meals){
+            if (meal.getId() == id){
+                return meal;
+            }
+        }
+        return null;
+
+    }
 }

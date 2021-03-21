@@ -1,6 +1,7 @@
 package com.hanss.mealup.webservices.restservices.meal;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Meal {
     private long id;
@@ -8,6 +9,19 @@ public class Meal {
     private String description;
     private int calories;
     private Date mealDate;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Meal meal = (Meal) o;
+        return id == meal.id && calories == meal.calories && username.equals(meal.username) && description.equals(meal.description) && mealDate.equals(meal.mealDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, description, calories, mealDate);
+    }
 
     public Meal(long id, String username, String description, int calories, Date mealDate) {
         super();
