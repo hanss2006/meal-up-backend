@@ -30,7 +30,7 @@ public class MealHardcodedService {
         return null;
     }
 
-    private Meal findById(long id) {
+    public Meal findById(long id) {
         for (Meal meal:meals){
             if (meal.getId() == id){
                 return meal;

@@ -12,6 +12,11 @@ public class MealResource {
     @Autowired
     private MealHardcodedService mealService;
 
+    @GetMapping("/users/{username}/meals/{id}")
+    public Meal getAllMeals(@PathVariable String username, @PathVariable long id){
+        return mealService.findById(id);
+    }
+
     @GetMapping("/users/{username}/meals")
     public List<Meal> getAllMeals(@PathVariable String username){
         return mealService.findAll();
