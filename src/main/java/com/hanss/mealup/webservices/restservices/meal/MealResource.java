@@ -1,9 +1,12 @@
 package com.hanss.mealup.webservices.restservices.meal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,4 +34,20 @@ public class MealResource {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/users/{username}/meals/{id}")
+    public ResponseEntity<Meal> updateMeal(
+            @PathVariable String username, @PathVariable long id, @RequestBody Meal meal
+    ){
+        Meal mealUpdated = mealService.save(meal);
+        return new ResponseEntity<Meal>(meal, HttpStatus.OK);
+    }
+
+    @PostMapping("/users/{username}/meals")
+    public ResponseEntity<Meal> updateMeal(
+            @PathVariable String username, @RequestBody Meal meal
+    ){
+        Meal mealCreated = mealService.save(meal);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(mealCreated.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 }

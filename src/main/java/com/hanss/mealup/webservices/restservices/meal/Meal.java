@@ -23,6 +23,11 @@ public class Meal {
         return Objects.hash(id, username, description, calories, mealDate);
     }
 
+    protected Meal() {
+        super();
+        this.id = -1;
+    }
+
     public Meal(long id, String username, String description, int calories, Date mealDate) {
         super();
         this.id = id;

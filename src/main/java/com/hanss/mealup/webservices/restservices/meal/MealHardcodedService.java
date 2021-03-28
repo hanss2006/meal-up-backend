@@ -21,6 +21,17 @@ public class MealHardcodedService {
         return meals;
     }
 
+    public Meal save(Meal meal){
+        if(meal.getId()==-1 || meal.getId()==0){
+            meal.setId(++idCouner);
+            meals.add(meal);
+        } else {
+            deleteById(meal.getId());
+            meals.add(meal);
+        }
+        return meal;
+    }
+
     public  Meal deleteById(long id){
         Meal meal = findById(id);
         if (meal==null) return null;
