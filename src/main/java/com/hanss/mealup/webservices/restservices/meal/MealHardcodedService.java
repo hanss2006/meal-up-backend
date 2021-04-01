@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class MealHardcodedService {
     private static List<Meal> meals = new ArrayList<>();
-    private static int idCouner = 0;
+    private static Long idCouner = 0L;
 
     static {
         meals.add(new Meal(++idCouner, "user", "Potato", 111, new Date()));

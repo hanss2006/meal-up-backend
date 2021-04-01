@@ -1,10 +1,16 @@
 package com.hanss.mealup.webservices.restservices.meal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Meal {
-    private long id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String username;
     private String description;
     private int calories;
@@ -25,10 +31,10 @@ public class Meal {
 
     protected Meal() {
         super();
-        this.id = -1;
+        this.id = -1L;
     }
 
-    public Meal(long id, String username, String description, int calories, Date mealDate) {
+    public Meal(Long id, String username, String description, int calories, Date mealDate) {
         super();
         this.id = id;
         this.username = username;
@@ -37,7 +43,7 @@ public class Meal {
         this.mealDate = mealDate;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -57,7 +63,7 @@ public class Meal {
         return mealDate;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
