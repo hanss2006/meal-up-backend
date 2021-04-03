@@ -57,6 +57,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
             .csrf().disable()
+            //.cors().disable()
             .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeRequests()
@@ -88,7 +89,20 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             )
             .and()
             .ignoring()
-            .antMatchers("/h2-console/**/**");//Should not be in Production!
+            .antMatchers("/h2-console/**/**") //Should not be in Production!
+            .and()
+            .ignoring()
+            .antMatchers("/",
+                        "/favicon.ico",
+                        "/**/*.js",
+                        "/**/*.gif",
+                        "/**/*.svg",
+                        "/**/*.jpg",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/**/*.map",
+                        "/resources/static/**");
     }
 }
 
