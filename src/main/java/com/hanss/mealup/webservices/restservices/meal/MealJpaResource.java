@@ -20,63 +20,50 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class MealJpaResource {
 
     @Autowired
-    private MealHardcodedService mealService;
-
-    @Autowired
     private MealJpaRepository mealJpaRepository;
 
 
     @GetMapping("/jpa/users/{username}/meals")
-    public List<Meal> getAllTodos(@PathVariable String username){
+    public List<Meal> getAllMeals(@PathVariable String username){
         return mealJpaRepository.findByUsername(username);
-        //return todoService.findAll();
     }
 
-    @GetMapping("/jpa/users/{username}/todos/{id}")
-    public Meal getTodo(@PathVariable String username, @PathVariable long id){
+    @GetMapping("/jpa/users/{username}/meals/{id}")
+    public Meal getMeal(@PathVariable String username, @PathVariable long id){
         return mealJpaRepository.findById(id).get();
-        //return todoService.findById(id);
     }
 
     // DELETE /users/{username}/todos/{id}
-    @DeleteMapping("/jpa/users/{username}/todos/{id}")
-    public ResponseEntity<Void> deleteTodo(
+    @DeleteMapping("/jpa/users/{username}/meals/{id}")
+    public ResponseEntity<Void> deleteMeal(
             @PathVariable String username, @PathVariable long id) {
-
         mealJpaRepository.deleteById(id);
-
         return ResponseEntity.noContent().build();
     }
 
 
-    //Edit/Update a Todo
+    //Edit/Update a Meal
     //PUT /users/{user_name}/todos/{todo_id}
-    @PutMapping("/jpa/users/{username}/todos/{id}")
-    public ResponseEntity<Meal> updateTodo(
+    @PutMapping("/jpa/users/{username}/meals/{id}")
+    public ResponseEntity<Meal> updateMeal(
             @PathVariable String username,
             @PathVariable long id, @RequestBody Meal meal){
-
         meal.setUsername(username);
-
         Meal mealUpdated = mealJpaRepository.save(meal);
-
         return new ResponseEntity<Meal>(meal, HttpStatus.OK);
     }
 
-    @PostMapping("/jpa/users/{username}/todos")
-    public ResponseEntity<Void> createTodo(
+    @PostMapping("/jpa/users/{username}/meals")
+    public ResponseEntity<Void> createMeal(
             @PathVariable String username, @RequestBody Meal meal){
 
         meal.setUsername(username);
-
         Meal createdTodo = mealJpaRepository.save(meal);
-
         //Location
         //Get current resource url
         ///{id}
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(createdTodo.getId()).toUri();
-
         return ResponseEntity.created(uri).build();
     }
 
