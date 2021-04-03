@@ -93,6 +93,8 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .ignoring()
             .antMatchers("/",
+                        "/authenticate",
+                        "/manifest.json",
                         "/favicon.ico",
                         "/**/*.js",
                         "/**/*.gif",
@@ -100,9 +102,20 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.jpg",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js",
                         "/**/*.map",
-                        "/resources/static/**");
+                        "/resources/static/**",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/authenticate",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/manifest.json",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/favicon.ico",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.js",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.gif",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.svg",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.jpg",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.html",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.css",
+                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.map"
+                    );
     }
 }
 
