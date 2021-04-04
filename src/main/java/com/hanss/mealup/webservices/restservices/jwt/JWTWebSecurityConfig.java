@@ -103,18 +103,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.map",
-                        "/resources/static/**",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/authenticate",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/manifest.json",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/favicon.ico",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.js",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.gif",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.svg",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.jpg",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.html",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.css",
-                    "/meal-up-backend-0.0.1-SNAPSHOT/**/*.map"
+                        "/resources/static/**"
                     );
     }
 }
